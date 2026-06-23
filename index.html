@@ -3,57 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brew Haven - 3D Gemstone Design</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<title>Brew Haven - Liquid Design</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    
-    <header>
-        <h1>Brew Haven</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#menu">Menu</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
 
-    <div class="card-wrapper hero-wrapper">
-        <div class="card-content hero-content">
+    <div class="container">
+        
+        <header class="glass-panel">
+            <h1>Brew Haven</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#menu">Menu</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <section class="hero glass-panel">
             <h2>Crafted Coffee,<br>Crafted Moments</h2>
             <p>Premium coffee made from ethically sourced beans.</p>
-            <button>Order Now</button>
-        </div>
-    </div>
+            <button class="action-btn">Order Now</button>
+        </section>
 
-    <div class="card-wrapper about-wrapper" id="about">
-        <div class="card-content about-content dark-text">
+        <section id="about" class="glass-panel">
             <h2>About Us</h2>
             <p>A unique coffee experience for creators, dreamers, and coffee lovers.</p>
-        </div>
-    </div>
+        </section>
 
-    <div class="card-wrapper menu-wrapper" id="menu">
-        <div class="card-content menu-content">
+        <section id="menu" class="glass-panel">
             <h2>Signature Drinks</h2>
-            <div id="menu-items">
-                <div class="gem-pill gem-amber">Caramel Cloud Latte</div>
-                <div class="gem-pill gem-frost">Vanilla Cold Brew</div>
-                <div class="gem-pill gem-choco">Hazelnut Mocha</div>
+            <div class="menu-grid">
+                <div class="glass-pill">Caramel Cloud Latte</div>
+                <div class="glass-pill">Vanilla Cold Brew</div>
+                <div class="glass-pill">Hazelnut Mocha</div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="card-wrapper contact-wrapper" id="contact">
-        <div class="card-content contact-content dark-text">
+        <section id="contact" class="glass-panel">
             <h2>Contact</h2>
-            <p>Ahmedabad, India <span class="pin-icon"></span></p>
-        </div>
-    </div>
+            <p>Ahmedabad, India</p>
+        </section>
 
-</div>
+    </div>
 
 </body>
 </html>
