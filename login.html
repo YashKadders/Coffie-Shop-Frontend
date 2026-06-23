@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iOS Liquid Login</title>
+<style>
+    /* =========================================
+       GLOBAL SETTINGS
+       ========================================= */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        /* Use Apple's default system font */
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f0f0f5;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* Hide scrollbars from floating blobs */
+        position: relative;
+    }
+
+    /* =========================================
+       LIQUID BACKGROUND BLOBS
+       ========================================= */
+    .blob {
+        position: absolute;
+        filter: blur(40px);
+        z-index: 0;
+        opacity: 0.7;
+        animation: float 10s infinite ease-in-out alternate;
+    }
+
+    /* Top Left - Purple/Pink */
+    .blob-1 {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(135deg, #ff2a5f, #ba00ff);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        top: -50px;
+        left: -50px;
+        animation-duration: 12s;
+    }
+
+    /* Bottom Right - Blue/Teal */
+    .blob-2 {
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(135deg, #00c6ff, #0072ff);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        bottom: -100px;
+        right: -100px;
+        animation-duration: 15s;
+        animation-delay: -2s;
+    }
+
+    /* Center - Soft Orange */
+    .blob-3 {
+        width: 250px;
+        height: 250px;
+        background: linear-gradient(135deg, #ff8c00, #ff0055);
+        border-radius: 50%;
+        top: 40%;
+        left: 30%;
+        animation-duration: 10s;
+        animation-delay: -5s;
+    }
+
+    /* Animation to make the blobs shift shape and move */
+    @keyframes float {
+        0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+        33% { transform: translate(30px, -50px) scale(1.1) rotate(10deg); }
+        66% { transform: translate(-20px, 20px) scale(0.9) rotate(-10deg); }
+        100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    }
+
+    /* =========================================
+       FROSTED GLASS LOGIN CARD
+       ========================================= */
+    .glass-card {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        max-width: 380px;
+        padding: 40px 30px;
+        border-radius: 24px;
+        
+        /* The iOS Glass effect */
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px); /* Safari support */
+        
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    /* =========================================
+       TYPOGRAPHY & FORM ELEMENTS
+       ========================================= */
+    .glass-card h2 {
+        color: #1d1d1f;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .glass-card p {
+        color: #515154;
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+
+    .input-group {
+        margin-bottom: 16px;
+        text-align: left;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 16px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.6);
+        font-size: 1rem;
+        color: #1d1d1f;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+
+    .input-group input::placeholder {
+        color: #86868b;
+    }
+
+    .input-group input:focus {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: #007aff;
+        box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+    }
+
+    /* iOS Style Button */
+    .login-btn {
+        width: 100%;
+        padding: 16px;
+        margin-top: 10px;
+        border-radius: 12px;
+        border: none;
+        background-color: #007aff; /* Apple Blue */
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .login-btn:hover {
+        background-color: #006ce0;
+    }
+
+    .login-btn:active {
+        transform: scale(0.98);
+    }
+
+    .links {
+        margin-top: 20px;
+        font-size: 0.9rem;
+    }
+
+    .links a {
+        color: #007aff;
+        text-decoration: none;
+        transition: opacity 0.2s;
+    }
+
+    .links a:hover {
+        opacity: 0.7;
+    }
+</style>
+</head>
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="glass-card">
+        <h2>Welcome Back</h2>
+        <p>Sign in to continue to Brew Haven</p>
+
+        <form>
+            <div class="input-group">
+                <input type="email" placeholder="Email or Username" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-btn">Sign In</button>
+        </form>
+
+        <div class="links">
+            <a href="#">Forgot password?</a>
+        </div>
+    </div>
+
+</body>
+</html>
